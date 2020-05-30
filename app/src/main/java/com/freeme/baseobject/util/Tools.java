@@ -5,6 +5,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+
 public class Tools {
     //隐藏底部虚拟按键
     public static void hideBottomUIMenu(Window window){
@@ -21,5 +25,9 @@ public class Tools {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         }
 
+    }
+
+    public static <T> Type getType(T t){
+       return new TypeToken<T>(){}.getType();
     }
 }

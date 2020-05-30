@@ -1,6 +1,7 @@
 package com.freeme.baseobject;
 
 import android.os.SystemClock;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.freeme.baseobject.base.BaseBean;
@@ -8,8 +9,13 @@ import com.freeme.baseobject.base.BaseVM;
 import com.freeme.baseobject.databinding.ActivityTestBinding;
 import com.freeme.baseobject.net.NetWorkManager;
 import com.freeme.baseobject.util.RxBus;
+import com.freeme.baseobject.util.Tools;
+import com.google.gson.reflect.TypeToken;
 
-import rx.Scheduler;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -55,7 +61,11 @@ public class TestVM extends BaseVM<ActivityTestBinding, TestInterf.MainView> {
             }
         }).start();
 
-        NetWorkManager.getInstent().getNetApi().getRule("admin", "123456")
+        NetWorkManager
+                .getInstance(null)
+//                .getInstance(NetWorkManager.getInterceptor())
+                .getNetApi()
+                .login("admin", "123456")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<BaseBean>() {
@@ -66,7 +76,7 @@ public class TestVM extends BaseVM<ActivityTestBinding, TestInterf.MainView> {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Log.e("lmy", "onError: " + e.getMessage());
                     }
 
                     @Override
