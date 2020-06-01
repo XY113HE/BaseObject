@@ -1,2 +1,3 @@
 rootProject.name='BaseObject'
 include ':app'
+include ':baselib'
