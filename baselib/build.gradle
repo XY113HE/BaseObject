@@ -21,6 +21,10 @@ android {
         }
     }
 
+    //引入DataBinding
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -30,4 +34,21 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //retrofit
+    implementation 'com.squareup.okhttp3:okhttp:3.4.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //rxjava
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.1.6'
+    //rxlifecycle
+    implementation 'com.trello:rxlifecycle:1.0'
+    implementation 'com.trello:rxlifecycle-components:1.0'
+    //recyclerView
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+
+    //动态权限管理
+    implementation 'gun0912.ted:tedpermission:2.2.2'
 }
